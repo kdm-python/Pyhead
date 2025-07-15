@@ -16,13 +16,6 @@ class Dose(BaseModel):
     afternoon: float = 0.0
     evening: float = 0.0
 
-    @field_validator("morning", "afternoon", "evening")
-    @classmethod
-    def non_negative(cls, v):
-        if v < 0:
-            raise ValueError("Dose values must be non-negative")
-        return v
-
 
 class Medication(BaseModel):
     name: str
@@ -32,5 +25,3 @@ class Medication(BaseModel):
     end_date: Optional[date] = None
     side_effects: Optional[List[str]] = None
     notes: Optional[List[str]] = None
-
-

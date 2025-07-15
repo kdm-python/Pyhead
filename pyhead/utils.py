@@ -1,4 +1,12 @@
 from pydantic import BaseModel
+from pyhead.models import (
+    DiaryEntry,
+    Medication,
+    Dose,
+)
+
+
+# Data conversion
 
 
 def model_to_json_dict(obj):
@@ -29,7 +37,7 @@ def uk_date_to_iso(date_str):
     """
     if not date_str:
         return None
-    day, month, year = map(int, date_str.split('/'))
+    day, month, year = map(int, date_str.split("/"))
     return f"{year:04d}-{month:02d}-{day:02d}"
 
 
@@ -39,5 +47,5 @@ def iso_date_to_uk(iso_date_str):
     """
     if not iso_date_str:
         return None
-    year, month, day = map(int, iso_date_str.split('-'))
+    year, month, day = map(int, iso_date_str.split("-"))
     return f"{day:02d}/{month:02d}/{year:04d}"

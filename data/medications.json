@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Ibuprofen",
+        "dose": {
+            "morning": 200.0,
+            "afternoon": 0.0,
+            "evening": 200.0
+        },
+        "active": true,
+        "start_date": "2025-01-01",
+        "end_date": null,
+        "side_effects": [
+            "Nausea"
+        ],
+        "notes": null
+    }
+]

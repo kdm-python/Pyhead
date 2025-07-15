@@ -1,0 +1,18 @@
+[
+    {
+        "date": "2025-07-15",
+        "score": 5,
+        "limited": true,
+        "cluster": false,
+        "notes": [
+            "test"
+        ]
+    },
+    {
+        "date": "2025-07-16",
+        "score": 8,
+        "limited": false,
+        "cluster": true,
+        "notes": null
+    }
+]
