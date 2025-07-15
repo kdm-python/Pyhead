@@ -1,0 +1,25 @@
+[project]
+name = "pyhead"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "kdm-python",email = "kyle.marden@yahoo.co.uk"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "fastapi (>=0.115.14,<0.116.0)",
+    "uvicorn (>=0.35.0,<0.36.0)",
+    "pydantic (>=2.11.7,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+icecream = "^2.1.5"
+loguru = "^0.7.3"
+pytest = "^8.4.1"
+
