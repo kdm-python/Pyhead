@@ -73,3 +73,16 @@ def test_create_and_delete_medication(tmp_path, monkeypatch, sample_medication):
     crud.delete_medication_by_name("Ibuprofen")
     meds = database.load_medications()
     assert meds == []
+
+
+def test_create_medication_duplicate_name(tmp_path, monkeypatch, sample_medication):
+    from pyhead import database
+
+    monkeypatch.setattr(database, "MEDICATION_FILE", tmp_path / "medications.json")
+    monkeypatch.setattr(database, "DATA_DIR", tmp_path)
+
+    # Add medication
+    crud.create_medication(sample_medication)
+    # Try to add again, should raise ValueError
+    with pytest.raises(ValueError):
+        crud.create_medication(sample_medication)

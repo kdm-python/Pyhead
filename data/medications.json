@@ -13,5 +13,22 @@
             "Nausea"
         ],
         "notes": null
+    },
+    {
+        "name": "Demo Medication",
+        "dose": {
+            "morning": 100.0,
+            "afternoon": 200.0,
+            "evening": 100.0
+        },
+        "active": true,
+        "start_date": "2025-07-16",
+        "end_date": null,
+        "side_effects": [
+            "Demo side effect"
+        ],
+        "notes": [
+            "Demo medication from script"
+        ]
     }
 ]

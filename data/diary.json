@@ -11,8 +11,31 @@
     {
         "date": "2025-07-16",
         "score": 8,
-        "limited": false,
-        "cluster": true,
-        "notes": null
+        "limited": true,
+        "cluster": false,
+        "notes": [
+            "Updated demo entry",
+            "Score increased to 8"
+        ]
+    },
+    {
+        "date": "2025-07-16",
+        "score": 6,
+        "limited": true,
+        "cluster": false,
+        "notes": [
+            "Demo headache entry",
+            "Created from demo script"
+        ]
+    },
+    {
+        "date": "2025-07-16",
+        "score": 6,
+        "limited": true,
+        "cluster": false,
+        "notes": [
+            "Demo headache entry",
+            "Created from demo script"
+        ]
     }
 ]

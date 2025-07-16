@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from pyhead.api.routers import medications, diary
+
 app = FastAPI(
     title="PyHead API",
     description="API for PyHead, a personal headache management application",
@@ -14,6 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(medications.router)
+app.include_router(diary.router)
 
 
 @app.get("/api/health")

@@ -1,5 +1,4 @@
-from fastapi import Depends
-from typing import List, Callable
+from typing import List
 from pyhead.models import DiaryEntry, Medication
 from pyhead.database import (
     load_diary_entries,
