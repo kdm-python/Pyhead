@@ -1,0 +1,106 @@
+:root {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --light-surface: #2c2c2c;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #bb86fc;
+  --danger: #cf6679;
+  --success: #03dac6;
+  --border: #333333;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--bg) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+nav {
+  background-color: var(--surface) !important;
+}
+nav a {
+  color: var(--text-primary) !important;
+  margin: 0 1rem;
+}
+nav a:hover {
+  color: var(--accent) !important;
+}
+
+.card {
+  background-color: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+.card .card-body {
+  color: var(--text-primary) !important;
+}
+
+.badge {
+  background-color: var(--light-surface) !important;
+  color: var(--text-secondary) !important;
+}
+
+.btn {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--bg) !important;
+}
+.btn-outline-secondary {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--accent) !important;
+  color: var(--bg) !important;
+}
+.btn-outline-danger {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+.btn-outline-danger:hover {
+  background-color: var(--danger) !important;
+  color: var(--bg) !important;
+}
+
+.form-control {
+  background-color: var(--light-surface) !important;
+  border: 1px solid var(--border) !important;
+  color: #000 !important;
+}
+.form-control:focus {
+  background-color: var(--light-surface) !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+.form-label, .form-check-label, .invalid-feedback {
+  color: #000 !important;
+}
+
+.table {
+  color: var(--text-primary) !important;
+}
+.table thead th {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
+}
+.table tbody tr {
+  background-color: var(--surface) !important;
+}
+
+ul, ol {
+  color: var(--text-primary) !important;
+}

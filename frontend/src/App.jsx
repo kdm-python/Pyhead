@@ -4,6 +4,8 @@ import Homepage from './pages/Homepage';
 import DiaryPage from './pages/DiaryPage';
 import MedicationPage from './pages/MedicationPage';
 import Navbar from './components/Navbar';
+import "bootstrap/dist/css/bootstrap.min.css";
+import './styles/dark-theme.css';
 
 function App() {
   return (
