@@ -1,41 +1,20 @@
 [
     {
-        "date": "2025-07-15",
-        "score": 5,
+        "date": "2025-07-20",
+        "score": 10,
         "limited": true,
-        "cluster": false,
+        "cluster": true,
         "notes": [
-            "test"
+            "Hospital visit for oxygen"
         ]
     },
     {
-        "date": "2025-07-16",
-        "score": 8,
+        "date": "2025-07-19",
+        "score": 7,
         "limited": true,
         "cluster": false,
         "notes": [
-            "Updated demo entry",
-            "Score increased to 8"
-        ]
-    },
-    {
-        "date": "2025-07-16",
-        "score": 6,
-        "limited": true,
-        "cluster": false,
-        "notes": [
-            "Demo headache entry",
-            "Created from demo script"
-        ]
-    },
-    {
-        "date": "2025-07-16",
-        "score": 6,
-        "limited": true,
-        "cluster": false,
-        "notes": [
-            "Demo headache entry",
-            "Created from demo script"
+            "No hospital"
         ]
     }
 ]

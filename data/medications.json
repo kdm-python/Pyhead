@@ -1,34 +1,81 @@
 [
     {
-        "name": "Ibuprofen",
+        "name": "Lamotrigine",
         "dose": {
-            "morning": 200.0,
+            "morning": 600.0,
             "afternoon": 0.0,
-            "evening": 200.0
+            "evening": 0.0
         },
         "active": true,
-        "start_date": "2025-01-01",
+        "start_date": "2020-01-01",
         "end_date": null,
         "side_effects": [
-            "Nausea"
-        ],
-        "notes": null
-    },
-    {
-        "name": "Demo Medication",
-        "dose": {
-            "morning": 100.0,
-            "afternoon": 200.0,
-            "evening": 100.0
-        },
-        "active": true,
-        "start_date": "2025-07-16",
-        "end_date": null,
-        "side_effects": [
-            "Demo side effect"
+            "Cognitive"
         ],
         "notes": [
-            "Demo medication from script"
+            "Think about lowering dose"
+        ]
+    },
+    {
+        "name": "Duloxetine",
+        "dose": {
+            "morning": 120.0,
+            "afternoon": 0.0,
+            "evening": 0.0
+        },
+        "active": true,
+        "start_date": "2020-01-01",
+        "end_date": null,
+        "side_effects": [
+            "Constipation"
+        ],
+        "notes": []
+    },
+    {
+        "name": "Pregabalin",
+        "dose": {
+            "morning": 300.0,
+            "afternoon": 300.0,
+            "evening": 0.0
+        },
+        "active": true,
+        "start_date": "2020-01-01",
+        "end_date": null,
+        "side_effects": [
+            "Cognitive"
+        ],
+        "notes": [
+            "Need to lower the dose"
+        ]
+    },
+    {
+        "name": "Aripiprazole",
+        "dose": {
+            "morning": 7.0,
+            "afternoon": 0.0,
+            "evening": 0.0
+        },
+        "active": true,
+        "start_date": "2024-10-10",
+        "end_date": null,
+        "side_effects": [],
+        "notes": [
+            "Effective"
+        ]
+    },
+    {
+        "name": "Hydrocortisone",
+        "dose": {
+            "morning": 10.0,
+            "afternoon": 5.0,
+            "evening": 5.0
+        },
+        "active": true,
+        "start_date": "2025-05-01",
+        "end_date": null,
+        "side_effects": [],
+        "notes": [
+            "Cognitive help"
         ]
     }
 ]
