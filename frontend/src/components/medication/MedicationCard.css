@@ -10,13 +10,23 @@
   margin-bottom: 1.5rem;
   position: relative;
   max-width: 400px;
-  min-height: 180px;
-  transition: box-shadow 0.2s, background 0.2s;
+  min-height: 80px; /* Smaller to accommodate collapsed state */
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .medication-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   background-color: var(--light-surface);
+}
+
+.medication-card.card-collapsed {
+  height: auto;
+  max-height: 120px; /* Height just enough for the title */
+}
+
+.medication-card.card-expanded {
+  height: auto;
 }
 
 .medication-title-collapsible {
@@ -37,6 +47,20 @@
   z-index: 2;
   right: 1rem;
   top: 1rem;
+}
+
+/* New styles for independent expanded/collapsed states */
+.medication-details-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.2s ease;
+}
+
+.medication-details-container.expanded {
+  max-height: 500px; /* Adjust based on the expected maximum height of expanded content */
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease 0.2s;
 }
 
 /* Optionally, adjust the delete button size for responsiveness */

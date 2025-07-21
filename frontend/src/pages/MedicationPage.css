@@ -13,4 +13,5 @@
   justify-content: center;
   gap: 16px;
   width: 100%;
+  align-items: flex-start; /* Prevents cards from stretching to match heights */
 }

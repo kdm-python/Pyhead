@@ -196,3 +196,21 @@ export async function getDiaryEntriesByMonth(year, month) {
     throw error;
   }
 }
+
+/** * Get statistics for a specific month
+ * @param {number} year - Year (e.g. 2025)
+ * @param {number} month - Month (1-12)
+ * @returns {Promise<Object>} Statistics object containing average score, total entries, etc.
+ */
+export async function getMonthStats(year, month) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/diary/stats/${year}/${month}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching month stats:', error);
+    throw error;
+  }
+}

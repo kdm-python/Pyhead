@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NumberInput from "../common/NumberInput";
+import SelectMonthYear from "../common/SelectMonthYear";
 import SubmitButton from "../common/SubmitButton";
 
 const SearchMonth = ({ onSearch, onReset }) => {
@@ -51,31 +51,11 @@ const SearchMonth = ({ onSearch, onReset }) => {
       <div className="card-body">
         <h5 className="card-title">Search by Month</h5>
         <form onSubmit={handleSubmit}>
-          <div className="row mb-3">
-            <div className="col">
-              <NumberInput
-                label="Year"
-                name="year"
-                value={formData.year}
-                onChange={(value) => handleChange("year", value)}
-                error={errors.year}
-                min={1900}
-                max={currentYear + 5}
-              />
-            </div>
-            <div className="col">
-              <NumberInput
-                label="Month"
-                name="month"
-                value={formData.month}
-                onChange={(value) => handleChange("month", value)}
-                error={errors.month}
-                min={1}
-                max={12}
-              />
-            </div>
-          </div>
-          
+          <SelectMonthYear
+            formData={formData}
+            errors={errors}
+            onChange={handleChange}
+          />
           <div className="d-flex justify-content-between">
             <SubmitButton label="Search" type="submit" />
             <SubmitButton 
@@ -94,3 +74,4 @@ const SearchMonth = ({ onSearch, onReset }) => {
 };
 
 export default SearchMonth;
+

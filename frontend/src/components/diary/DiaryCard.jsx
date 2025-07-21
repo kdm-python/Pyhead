@@ -12,7 +12,7 @@ const DiaryCard = ({ entry, onDeleted }) => {
   return (
     <div
       className="card mb-3 shadow-sm d-flex flex-column align-items-stretch position-relative"
-      style={{ maxWidth: "400px", minHeight: collapsed ? "auto" : "260px", height: "100%", paddingTop: "48px" }}
+      style={{ maxWidth: "400px", minHeight: collapsed ? "auto" : "260px", paddingTop: "48px" }}
     >
       {/* Delete button positioned at top-right */}
       <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 2 }}>
@@ -26,7 +26,7 @@ const DiaryCard = ({ entry, onDeleted }) => {
           style={{ cursor: "pointer", userSelect: "none" }}
           title={collapsed ? "Show details" : "Hide details"}
         >
-          {date} - Score: {score}/10
+          {date}
           <span style={{ marginLeft: 8, fontSize: "1rem" }}>
             {collapsed ? "▼" : "▲"}
           </span>

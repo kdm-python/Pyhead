@@ -51,7 +51,7 @@ def get_entries_by_month(year: int, month: int):
     return entries
 
 
-@router.get("/stats/month/{year}/{month}", response_model=dict)
+@router.get("/stats/{year}/{month}", response_model=dict)
 def get_month_stats(year: int, month: int):
     """Retrieve statistics for a specific month."""
     entries = get_entries_by_month(year, month)

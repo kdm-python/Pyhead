@@ -4,12 +4,17 @@ import DiaryCard from "../components/diary/DiaryCard";
 import DiaryForm from "../components/diary/DiaryForm";
 import SearchMonth from "../components/diary/SearchMonth";
 import SubmitButton from "../components/common/SubmitButton";
+import MonthStatsCard from "../components/diary/MonthStatsCard";
 
 const DiaryPage = () => {
   const [diaryEntries, setDiaryEntries] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showMonthSearch, setShowMonthSearch] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
+  const [showMonthStats, setShowMonthStats] = useState(false);
+
+  // Track each entry’s collapsed state by date
+  const [collapsedMap, setCollapsedMap] = useState({});
 
   useEffect(() => {
     getDiaryEntries().then((data) => {
@@ -23,11 +28,19 @@ const DiaryPage = () => {
   const toggleForm = () => {
     setShowForm((prev) => !prev);
     if (showMonthSearch) setShowMonthSearch(false);
+    if (showMonthStats) setShowMonthStats(false);
   };
   
   const toggleMonthSearch = () => {
     setShowMonthSearch((prev) => !prev);
     if (showForm) setShowForm(false);
+    if (showMonthStats) setShowMonthStats(false);
+  };
+  
+  const toggleMonthStats = () => {
+    setShowMonthStats((prev) => !prev);
+    if (showForm) setShowForm(false);
+    if (showMonthSearch) setShowMonthSearch(false);
   };
   
   const handleFormSubmit = async (data) => {
@@ -67,9 +80,16 @@ const DiaryPage = () => {
     }
   };
 
-  // Sort diary entries by date ascending (YYYY-MM-DD format assumed)
+  const toggleCollapse = (date) => {
+    setCollapsedMap(prev => ({
+      ...prev,
+      [date]: !(prev[date] ?? true)
+    }));
+  };
+
+  // Sort diary entries by date descending (YYYY-MM-DD format assumed)
   const sortedEntries = diaryEntries
-    ? [...diaryEntries].sort((a, b) => new Date(a.date) - new Date(b.date))
+    ? [...diaryEntries].sort((a, b) => new Date(b.date) - new Date(a.date))
     : [];
 
   return (
@@ -82,9 +102,14 @@ const DiaryPage = () => {
           onClick={toggleForm}
         />
         <SubmitButton
-          label={showMonthSearch ? "Cancel Search" : "Search by Month"}
+          label={showMonthSearch ? "Cancel Search" : "Search Month Records"}
           onClick={toggleMonthSearch}
           variant={isFiltered ? "info" : "secondary"}
+        />
+        <SubmitButton
+          label={showMonthStats ? "Cancel Stats" : "Month Stats"}
+          onClick={toggleMonthStats}
+          variant="secondary"
         />
         {isFiltered && (
           <SubmitButton
@@ -106,6 +131,12 @@ const DiaryPage = () => {
           <SearchMonth onSearch={handleMonthSearch} onReset={handleResetSearch} />
         </div>
       )}
+
+      {showMonthStats && (
+        <div className="mt-4 mb-4">
+          <MonthStatsCard />
+        </div>
+      )}
       
       {!diaryEntries ? (
         <div>Loading diary entries...</div>
@@ -123,7 +154,12 @@ const DiaryPage = () => {
               key={entry.date || idx}
               style={{ flex: "1 0 22%", maxWidth: "24%", minWidth: "260px", margin: "0 0 16px 0" }}
             >
-              <DiaryCard entry={entry} onDeleted={handleDeleted} />
+              <DiaryCard
+                entry={entry}
+                onDeleted={handleDeleted}
+                collapsed={collapsedMap[entry.date] ?? true}
+                onToggle={() => toggleCollapse(entry.date)}
+              />
             </div>
           ))}
         </div>

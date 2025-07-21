@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MedicationCard.css";
 import MedDeleteButton from "./MedDeleteButton";
 
-const MedicationCard = ({ medication, onDeleted }) => {
+const MedicationCard = ({ medication, onDeleted, globalCollapsed }) => {
   const [collapsed, setCollapsed] = useState(true);
+  
+  // Sync with global collapse state when it changes
+  useEffect(() => {
+    if (globalCollapsed !== undefined) {
+      setCollapsed(globalCollapsed);
+    }
+  }, [globalCollapsed]);
 
   const handleToggle = () => setCollapsed((prev) => !prev);
 
   return (
-    <div className="medication-card position-relative">
+    <div className={`medication-card position-relative ${collapsed ? "card-collapsed" : "card-expanded"}`}>
       {/* Delete button positioned at top-right */}
       <div className="position-absolute top-0 end-0 m-2">
         <MedDeleteButton name={medication.name} onDeleted={onDeleted} />
@@ -24,7 +31,18 @@ const MedicationCard = ({ medication, onDeleted }) => {
           {collapsed ? "▼" : "▲"}
         </span>
       </h2>
-      {!collapsed && (
+      <div
+        className={`medication-details-container ${
+          collapsed ? "collapsed" : "expanded"
+        }`}
+        style={{
+          maxHeight: collapsed ? "0" : "1000px",
+          opacity: collapsed ? 0 : 1,
+          transition: collapsed 
+            ? "max-height 0.3s ease-in-out, opacity 0.1s ease-in-out" 
+            : "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out 0.1s"
+        }}
+      >
         <div className="medication-details">
           <p>
             <strong>Morning Dose:</strong> {medication.dose?.morning || "-"} mg
@@ -53,7 +71,7 @@ const MedicationCard = ({ medication, onDeleted }) => {
             <strong>Notes:</strong> {medication.notes || "No notes available"}
           </p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
