@@ -174,3 +174,25 @@ export async function getDiaryEntriesInRange(startDate, endDate) {
     throw error;
   }
 }
+
+/**
+ * Get diary entries for a specific month
+ * @param {number} year - Year (e.g. 2025)
+ * @param {number} month - Month (1-12)
+ * @returns {Promise<Array>} Diary entries for the specified month
+ */
+export async function getDiaryEntriesByMonth(year, month) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/diary/month/${year}/${month}`);
+    if (!response.ok) {
+      if (response.status === 404) {
+        return []; // No entries found for this month
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching diary entries by month:', error);
+    throw error;
+  }
+}

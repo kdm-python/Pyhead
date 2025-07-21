@@ -84,100 +84,102 @@ const DiaryForm = ({ onSubmit }) => {
   };
 
   return (
-    <form className="container p-4 bg-light rounded shadow" style={{ maxWidth: 600 }} onSubmit={handleSubmit}>
-      <h4 className="mb-3">Add Diary Entry</h4>
-      
-      <div className="mb-3">
-        <label className="form-label">Date</label>
-        <input
-          type="date"
-          name="date"
-          className={"form-control " + (errors.date ? "is-invalid" : "")}
-          value={form.date}
-          onChange={handleChange}
-        />
-        {errors.date && <div className="invalid-feedback">{errors.date}</div>}
-      </div>
-
-      <div className="mb-3">
-        <label className="form-label">Pain Score (1-10)</label>
-        <input
-          type="number"
-          name="score"
-          min="1"
-          max="10"
-          className={"form-control " + (errors.score ? "is-invalid" : "")}
-          value={form.score}
-          onChange={handleChange}
-        />
-        {errors.score && <div className="invalid-feedback">{errors.score}</div>}
-      </div>
-
-      <div className="mb-3">
-        <div className="form-check">
+    <form className="card" style={{ maxWidth: 600 }} onSubmit={handleSubmit}>
+      <div className="card-body">
+        <h4 className="mb-3">Add Diary Entry</h4>
+        
+        <div className="mb-3">
+          <label className="form-label">Date</label>
           <input
-            type="checkbox"
-            name="limited"
-            className="form-check-input"
-            checked={form.limited}
+            type="date"
+            name="date"
+            className={"form-control " + (errors.date ? "is-invalid" : "")}
+            value={form.date}
             onChange={handleChange}
           />
-          <label className="form-check-label">
-            Activity was limited
-          </label>
+          {errors.date && <div className="invalid-feedback">{errors.date}</div>}
         </div>
-      </div>
 
-      <div className="mb-3">
-        <div className="form-check">
+        <div className="mb-3">
+          <label className="form-label">Pain Score (1-10)</label>
           <input
-            type="checkbox"
-            name="cluster"
-            className="form-check-input"
-            checked={form.cluster}
+            type="number"
+            name="score"
+            min="1"
+            max="10"
+            className={"form-control " + (errors.score ? "is-invalid" : "")}
+            value={form.score}
             onChange={handleChange}
           />
-          <label className="form-check-label">
-            Cluster headache
-          </label>
+          {errors.score && <div className="invalid-feedback">{errors.score}</div>}
         </div>
-      </div>
 
-      <div className="mb-3">
-        <label className="form-label">Notes</label>
-        {form.notes.map((note, idx) => (
-          <div key={idx} className="mb-2 d-flex">
+        <div className="mb-3">
+          <div className="form-check">
             <input
-              type="text"
-              className="form-control me-2"
-              value={note}
-              onChange={(e) => handleArrayChange(e, "notes", idx)}
-              placeholder="Add a note..."
+              type="checkbox"
+              name="limited"
+              className="form-check-input"
+              checked={form.limited}
+              onChange={handleChange}
             />
-            {form.notes.length > 1 && (
-              <button
-                type="button"
-                className="btn btn-outline-danger"
-                onClick={() => removeArrayField("notes", idx)}
-              >
-                Remove
-              </button>
-            )}
+            <label className="form-check-label">
+              Activity was limited
+            </label>
           </div>
-        ))}
-        <button
-          type="button"
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => addArrayField("notes")}
-        >
-          + Add Note
-        </button>
-      </div>
+        </div>
 
-      <div className="text-center">
-        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-          {isSubmitting ? "Adding..." : "Add Entry"}
-        </button>
+        <div className="mb-3">
+          <div className="form-check">
+            <input
+              type="checkbox"
+              name="cluster"
+              className="form-check-input"
+              checked={form.cluster}
+              onChange={handleChange}
+            />
+            <label className="form-check-label">
+              Cluster headache
+            </label>
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Notes</label>
+          {form.notes.map((note, idx) => (
+            <div key={idx} className="mb-2 d-flex">
+              <input
+                type="text"
+                className="form-control me-2"
+                value={note}
+                onChange={(e) => handleArrayChange(e, "notes", idx)}
+                placeholder="Add a note..."
+              />
+              {form.notes.length > 1 && (
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={() => removeArrayField("notes", idx)}
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+          ))}
+          <button
+            type="button"
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => addArrayField("notes")}
+          >
+            + Add Note
+          </button>
+        </div>
+
+        <div className="text-center">
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? "Adding..." : "Add Entry"}
+          </button>
+        </div>
       </div>
     </form>
   );

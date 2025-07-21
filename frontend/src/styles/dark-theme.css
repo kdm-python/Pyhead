@@ -79,15 +79,15 @@ nav a:hover {
 .form-control {
   background-color: var(--light-surface) !important;
   border: 1px solid var(--border) !important;
-  color: #000 !important;
+  color: var(--text-primary) !important;
 }
 .form-control:focus {
   background-color: var(--light-surface) !important;
-  color: #000 !important;
+  color: var(--text-primary) !important;
   box-shadow: none !important;
 }
 .form-label, .form-check-label, .invalid-feedback {
-  color: #000 !important;
+  color: var(--text-primary) !important;
 }
 
 .table {
