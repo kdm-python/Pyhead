@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import DiaryDeleteButton from "./DiaryDeleteButton";
 
-const DiaryCard = ({ entry, onDeleted }) => {
-  const [collapsed, setCollapsed] = useState(true);
-  
+const DiaryCard = ({ entry, onDeleted, collapsed, onToggle }) => {
   if (!entry) return null;
   const { date, score, limited, cluster, notes } = entry;
-
-  const handleToggle = () => setCollapsed((prev) => !prev);
 
   return (
     <div
@@ -22,7 +18,7 @@ const DiaryCard = ({ entry, onDeleted }) => {
       <div className="card-body d-flex flex-column">
         <h5 
           className="card-title mb-2" 
-          onClick={handleToggle}
+          onClick={onToggle}
           style={{ cursor: "pointer", userSelect: "none" }}
           title={collapsed ? "Show details" : "Hide details"}
         >

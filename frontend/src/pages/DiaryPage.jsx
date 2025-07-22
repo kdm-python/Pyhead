@@ -5,6 +5,7 @@ import DiaryForm from "../components/diary/DiaryForm";
 import SearchMonth from "../components/diary/SearchMonth";
 import SubmitButton from "../components/common/SubmitButton";
 import MonthStatsCard from "../components/diary/MonthStatsCard";
+import CollapseAllButton from "../components/common/CollapseAllButton";
 
 const DiaryPage = () => {
   const [diaryEntries, setDiaryEntries] = useState(null);
@@ -12,6 +13,7 @@ const DiaryPage = () => {
   const [showMonthSearch, setShowMonthSearch] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
   const [showMonthStats, setShowMonthStats] = useState(false);
+  const [allCollapsed, setAllCollapsed] = useState(true);
 
   // Track each entry’s collapsed state by date
   const [collapsedMap, setCollapsedMap] = useState({});
@@ -21,6 +23,21 @@ const DiaryPage = () => {
       setDiaryEntries(data);
     });
   }, []);
+
+  // Toggle all cards collapsed/expanded
+  const toggleAllCards = () => {
+    const newAllCollapsed = !allCollapsed;
+    setAllCollapsed(newAllCollapsed);
+    
+    // Update all entries in the collapsedMap
+    if (diaryEntries) {
+      const newCollapsedMap = {};
+      diaryEntries.forEach(entry => {
+        newCollapsedMap[entry.date] = newAllCollapsed;
+      });
+      setCollapsedMap(newCollapsedMap);
+    }
+  };
 
   const handleDeleted = (date) =>
     setDiaryEntries((prev) => prev.filter((entry) => entry.date !== date));
@@ -120,6 +137,15 @@ const DiaryPage = () => {
         )}
       </div>
       
+      {diaryEntries && diaryEntries.length > 0 && (
+        <div className="mb-3">
+          <CollapseAllButton
+            label={allCollapsed ? "Expand All" : "Collapse All"}
+            onClick={toggleAllCards}
+          />
+        </div>
+      )}
+      
       {showForm && (
         <div className="mt-4 mb-4">
           <DiaryForm onSubmit={handleFormSubmit} />
@@ -157,7 +183,7 @@ const DiaryPage = () => {
               <DiaryCard
                 entry={entry}
                 onDeleted={handleDeleted}
-                collapsed={collapsedMap[entry.date] ?? true}
+                collapsed={collapsedMap[entry.date] ?? allCollapsed}
                 onToggle={() => toggleCollapse(entry.date)}
               />
             </div>
